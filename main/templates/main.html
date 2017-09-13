@@ -1,0 +1,56 @@
+{% load staticfiles %}
+{% load user_agents %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Студия разработки AIIRA</title>
+
+    <link rel="icon" href="{%static '\images\ico\favicon.ico' %}">
+</head>
+<body>
+<div class="head" align="middle">
+    <h3>Студия разработки "AIIRA"</h3>
+    <h5>Самая лучшая студия, наверное</h5><br>
+    <h3>Наши сотрудники:</h3>
+</div>
+
+<div class="developers" align="middle">
+    <table>
+    {% for user in users %}
+        <tr>
+            <td>
+                <img src="{{ user.photo.url }}" height="250">
+            </td>
+            <td>
+                <h4>{{ user.name }} {{ user.lastname }}</h4><br>
+                {{ user.description }}
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
+
+<div class="head" align="middle">
+    <br><h3>Наши проекты:</h3>
+</div>
+
+<div class="projects" align="middle">
+    <table>
+    {% for project in projects %}
+        <tr>
+            <td>
+                <img src="{{ project.photo.url }}" height="250">
+            </td>
+            <td>
+                <h4><a href="{{ project.link }}"> {{ project.project_name }} </a></h4><br>
+                {{ project.description }}
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+</body>
+</html>
